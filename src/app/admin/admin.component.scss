@@ -1,0 +1,89 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+.adminDashboard {
+    color: white;
+    background-color: #E3EDF9;
+    overflow: hidden;
+    p{
+        margin-bottom: 0px;
+    }
+    .sidebarSection {
+        // position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 999;
+        padding-top: 15px;
+        padding-left: 15px;
+        background-color: #121C3E;
+        width: 20%;
+        height: 100vh;
+        
+        .adminProfile {
+            background-color: #FFC20E;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .dashboard>div img:hover {
+            img {
+                filter: invert(-1);
+            }
+        }
+
+        .dashboard>div:hover {
+            background-color: #FFC20E;
+            color: black !important;
+        }
+    }
+
+    .rightSection {
+        width: 80%;
+        height: 100vh;
+        nav {
+            .menuIcon{
+                cursor: pointer;
+            }
+            .navserach input {
+                height: 40px !important;
+                width: 350px;
+                border: none;
+                padding-left: 10px;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+
+            .navserach>div {
+                border-top-left-radius: 8px;
+                border-bottom-left-radius: 8px;
+            }
+
+            .navserach img {
+                position: absolute;
+                right: 380px;
+            }
+
+            .navIcons .alertIcon,.settingIcon,.messageIcon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 43px;
+                border-radius: 50%;
+                height: 43px;
+            }
+            .navIcons .alertIcon,.settingIcon,.messageIcon i{
+                font-size: 25px;
+            }
+
+        }
+    }
+}

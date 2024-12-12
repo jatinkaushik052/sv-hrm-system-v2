@@ -1,0 +1,75 @@
+.dashboardSection {
+    .dashboardSlider {
+        display: flex;
+        overflow-x: auto;
+        max-width: 100%;
+        gap: 15px;
+        white-space: nowrap;
+        scroll-snap-type: x mandatory;
+
+        .dashboardCard {
+            min-width: 200px;
+            scroll-snap-align: start;
+            height: 80px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: transform 0.6s ease;
+        }
+
+        .dashboardCard:hover {
+            font-size: 20px;
+            transform: scale(0.7);
+        }
+    }
+
+    /* Styling the scrollbar */
+    .dashboardSlider::-webkit-scrollbar {
+        width: 200px;
+        height: 6px;
+    }
+
+    .dashboardSlider::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .dashboardSlider::-webkit-scrollbar-thumb {
+        background: #007bff;
+        border-radius: 10px;
+    }
+
+    .dashboardSlider::-webkit-scrollbar-thumb:hover {
+        background: #0056b3;
+    }
+
+
+    .cardsDashboard {
+        margin-top: 15px;
+
+        .card {
+            height: 270px;
+            min-width: calc(50% - 10px);
+            margin-top: 10px;
+            margin-right: 10px;
+            background-color: white;
+        }
+    }
+
+    /* Styling the scrollbar */
+    .cardsDashboard::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .cardsDashboard::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .cardsDashboard::-webkit-scrollbar-thumb {
+        background: #007bff;
+        border-radius: 10px;
+    }
+
+    .cardsDashboard::-webkit-scrollbar-thumb:hover {
+        background: #0056b3;
+    }
+}

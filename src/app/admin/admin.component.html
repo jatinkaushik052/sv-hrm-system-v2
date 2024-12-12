@@ -1,0 +1,97 @@
+<div class="d-flex adminDashboard">
+    <div  class=" container sidebarSection">
+        <div class="sidebarHeader">
+            <img src="/img/loginLogo.png" width="60%" height="50px" alt="">
+            <div class="d-flex align-items-center gap-3 mt-3">
+                <div class="adminProfile">
+                    <img src="/img/dp 1.png" alt="">
+                </div>
+                <div>
+                    <h1 style="font-size: 1rem;">Jatin Admin</h1>
+                    <p style="font-size: 12px;">admin</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard mt-2 ">
+            <p style="font-size: 12px;">Features</p>
+            <div routerLink="dashboard" class="mt-1  d-flex align-items-center  px-3 gap-1"
+                style="height: 40px; width: 240px; border-radius: 10px; cursor: pointer;">
+                <img src="/dashboardIcon/Vector (1).png" width="20px" height="20px" style="filter: invert(1);" alt="">
+                <p  style="font-size: 14px;">Dashboard</p>
+            </div>
+            <div class=" d-flex align-items-center text-white px-3 gap-1"
+                style="height: 40px; width: 240px; border-radius: 10px; cursor: pointer;">
+                <img src="/dashboardIcon/Vector (2).png" width="20px" height="20px" alt="">
+                <p style="font-size: 14px;">Message</p>
+            </div>
+        </div>
+     
+        <div class="dashboard mt-2 ">
+            <p style="font-size: 12px;">Organization</p>
+            <div class=" d-flex align-items-center text-white px-3 gap-1"
+                style="height: 40px; width: 240px; border-radius: 10px; cursor: pointer;">
+                <img src="/dashboardIcon/user-alt.png" width="20px" height="20px" alt="">
+                <p style="font-size: 14px;">Employee Management</p>
+            </div>
+            <div class=" d-flex align-items-center text-white px-3  gap-1"
+                style="height: 40px; width: 240px; border-radius: 10px; cursor: pointer;">
+                <img src="/dashboardIcon/book-open.png" width="20px" height="20px" alt="">
+                <p style="font-size: 14px;">Leave Management</p>
+            </div>
+            <div class=" d-flex align-items-center text-white px-3 gap-1"
+                style="height: 40px; width: 240px; border-radius: 10px; cursor: pointer;">
+                <img src="/dashboardIcon/Vector.png" width="20px" height="20px" alt="">
+                <p style="font-size: 14px;">Performance Management</p>
+            </div>
+        </div>
+        <div class="dashboard mt-2 ">
+            <p style="font-size: 12px;">Recruitment</p>
+            <div class="d-flex align-items-center text-white px-3 gap-1"
+                style="height: 40px; width: 240px; border-radius: 10px; cursor: pointer;">
+                <img src="/dashboardIcon/Vector (3).png" width="20px" height="20px" alt="">
+                <p style="font-size: 14px;">Jobs</p>
+            </div>
+            <div class=" d-flex align-items-center text-white px-3  gap-1"
+                style="height: 40px; width: 240px; border-radius: 10px; cursor: pointer;">
+                <img src="/dashboardIcon/Vector (4).png" width="20px" height="20px" alt="">
+                <p style="font-size: 14px;">Candidates</p>
+            </div>
+            <div class=" d-flex align-items-center text-white px-3 gap-1"
+                style="height: 40px; width: 240px; border-radius: 10px; cursor: pointer;">
+                <img src="/dashboardIcon/Vector (5).png" width="20px" height="20px" alt="">
+                <p style="font-size: 14px;">Resumes</p>
+            </div>
+        </div>
+        <div class="mt-3 d-flex align-items-center gap-1 bg-danger py-1 justify-content-center rounded">
+            <img src="/dashboardIcon/Vector (7).png" width="15px" height="15px" alt="">
+            <p>Log Out</p>
+        </div>
+      
+    </div>
+    
+    <div class="rightSection px-4">
+        <nav class="d-flex justify-content-between align-items-center pt-4">
+            <div  class="menuIcon d-flex align-items-center">
+                <img src="/dashboardIcon/Group 47.svg" width="30px" height="30px" alt="">
+            </div>
+            <div class="navserach  d-flex align-items-center">
+                <div class="bg-primary py-2 px-2">All Candidates</div>
+                <input type="text" name="" id="" placeholder="search">
+                <img src="/dashboardIcon/search.png" alt="">
+            </div>
+            <div class="navIcons d-flex align-items-center justify-content-center gap-3">
+                <div class="alertIcon" style="background: #253D90;">
+                    <i class='bx bxs-bell'></i>
+                </div>
+                <div class="settingIcon" style="background: #FFC20E;">
+                    <i class='bx bx-male-sign'></i>
+                </div>
+                <div class="messageIcon" style="background: #3F861E;">
+                    <i class='bx bx-envelope'></i>
+                </div>
+            </div>
+        </nav>
+        <router-outlet/>
+    </div>
+</div>
