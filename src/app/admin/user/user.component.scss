@@ -1,0 +1,25 @@
+.dashboardSlider {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    max-width: 100%;
+    gap: 15px;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+
+    .dashboardCard {
+        min-width: 300px;
+        scroll-snap-align: start;
+        height: 80px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: transform 0.6s ease;
+    }
+
+    .dashboardCard:hover {
+        font-size: 30px;
+        transform: scale(0.7);
+    }
+}

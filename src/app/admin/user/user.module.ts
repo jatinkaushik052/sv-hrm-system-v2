@@ -6,6 +6,8 @@ import { UserComponent } from './user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +19,11 @@ import { AddUserComponent } from './add-user/add-user.component';
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    RouterLink,
+    RouterOutlet,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class UserModule { }
