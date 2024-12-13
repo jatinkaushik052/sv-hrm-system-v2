@@ -14,15 +14,79 @@
                 <h1 >Login</h1>
                 <p >Login to your account</p>
             </div>
-            <form [formGroup]="loginForm" class="w-25" >
+            <form [formGroup]="loginForm" class="w-25" novalidate >
                 <div class="text-white d-flex flex-column gap-2 ">
-                    <label for="">E-mail Address</label>
-                    <input appDisableCopy formControlName="mobileNo" type="text" name="mobileno" id="">
+                    <label for="">Mobile Number</label>
+                    <input appDisableCopy  formControlName="mobileNo" type="text" name="mobileno" id="mobileno" maxlength="10"
+                    (input)="onChangeVal($event)"
+                    >
+                    <div class="text-danger">
+                        @if (loginForm.get('mobileNo')?.invalid && loginForm.get('mobileNo')?.touched) {
+                            <span>This is field is required</span>
+                        }@else if (loginForm.controls['mobileNo'].hasError('pattern')) {
+                            <span></span>
+                        }
+                      </div>
                 </div>
-                <div class="text-white d-flex flex-column gap-2 mt-3">
+                <!-- <div class="text-white d-flex flex-column gap-2 mt-3">
                     <label for="">Password</label>
-                    <input appDisableCopy formControlName="password" type="text" name="" id="">
+                   <div class="d-flex">
+                    <input appDisableCopy formControlName="password" [type]="isPasswordVisible ? 'text' : 'password'" name="" id="" minlength="8"  class=" w-100">
+                    @if(isEye){
+                        <span class="d-flex align-items-center" style="margin-left: -24px; cursor: pointer;"><i (click)="onEye()"  class="text-black fa-solid fa-eye position-absolute"></i></span>
+                    }
+                    @else {
+                        <span   class="d-flex align-items-center" style="margin-left: -24px; cursor: pointer;"><i (click)="onEye()"  class="text-black fa-solid fa-eye-slash"></i></span>
+                    }
+                   </div>
+                    <div class="text-danger">
+                        @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+                            <span>This is field is required</span>
+                        }@else if (loginForm.get('password')?.hasError('minlength')) {
+                            <span>Password must be at least 8 characters long</span>
+                        }
+                        @else if (loginForm.get('password')?.hasError('pattern')) {
+                            <span>must contain an [A-Z], [a=z], [0-9], special char</span>
+                        }
+                      </div>
+                </div> -->
+               
+                <div class="text-white d-flex flex-column gap-2 mt-3">
+                    <label for="password">Password</label>
+                    <div class="d-flex">
+                        <input 
+                            appDisableCopy 
+                            formControlName="password" 
+                            [type]="isPasswordVisible ? 'text' : 'password'" 
+                            name="password" 
+                            id="password" 
+                            minlength="8"  
+                            class="w-100">
+                        
+                        <!-- Eye icon toggle for password visibility -->
+                        <span class="d-flex align-items-center" style="margin-left: -24px; cursor: pointer;">
+                            <i 
+                                (click)="onEye()"  
+                                class="text-black fa-solid" 
+                                [ngClass]="isEye ? 'fa-eye' : 'fa-eye-slash'">
+                            </i>
+                        </span>
+                    </div>
+                    
+                    <!-- Error messages for password validation -->
+                    <div class="text-danger">
+                        <span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                            This field is required
+                        </span>
+                        <span *ngIf="loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched">
+                            Password must be at least 8 characters long
+                        </span>
+                        <span *ngIf="loginForm.get('password')?.hasError('pattern') && loginForm.get('password')?.touched">
+                            Password must contain at least one [A-Z], [a-z], [0-9], and a special character.
+                        </span>
+                    </div>
                 </div>
+                
                 <div class="text-white d-flex justify-content-between mt-3">
                     <div class="d-flex align-items-center">
                         <input type="radio">
