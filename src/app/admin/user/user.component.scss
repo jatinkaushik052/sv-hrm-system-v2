@@ -9,9 +9,9 @@
     scroll-snap-type: x mandatory;
 
     .dashboardCard {
-        min-width: 300px;
+        width: 200px !important;
         scroll-snap-align: start;
-        height: 80px;
+        height: 56px;
         border-radius: 8px;
         margin-bottom: 10px;
         cursor: pointer;

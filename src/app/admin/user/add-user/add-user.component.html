@@ -7,23 +7,25 @@
             <form [formGroup]="userForm" action="" class=" row gy-2 text-black">
                 <div class="d-flex flex-column col-6">
                     <label for="">Enter Name</label>
-                    <input formControlName="name" type="text" name="" id="">
+                    <input formControlName="name" type="text" name="name" id="">
                 </div>
                 <div class="d-flex flex-column col-6">
                     <label for="">Enter UserName</label>
-                    <input formControlName="username" type="text" name="" id="">
+                    <input formControlName="username" type="text" name="username" id="">
                 </div>
                 <div class="d-flex flex-column col-6">
                     <label for="">Salary</label>
-                    <input formControlName="salary" type="text" name="" id="">
+                    <input formControlName="salary" type="text" name="salary" id="">
                 </div>
                 <div class="d-flex flex-column col-6">
                     <label for="">Enter Email</label>
-                    <input formControlName="email" type="text" name="" id="">
+                    <input formControlName="email" type="text" name="email" id="">
                 </div> 
                
                 <div class="col-12 pb-4">
-                    <button class="button" class="btn btn-primary" (click)="onAdd()">Add</button>
+                    <button *ngIf="currentId ===0" class="button" class="btn btn-primary" (click)="onAdd()">Add</button>
+                    <button *ngIf="currentId !==0" class="button" class="btn btn-warning" (click)="onUpdate()">Update</button>
+
                 </div>
             </form>
         </div>

@@ -1,28 +1,37 @@
-body{
+body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    
 }
 
 .adminDashboard {
+    position: relative;
     color: white;
     background-color: #E3EDF9;
-    overflow: hidden;
-    p{
+    overflow-y: auto;
+    height: 100vh;
+
+    p {
         margin-bottom: 0px;
     }
+    // .sidebarSection {
+    //     @media (min-width: 576px) and (max-width: 991px) {
+    //        display: none;
+    //     }
+    // }
     .sidebarSection {
-        // position: absolute;
+        position: absolute;
         left: 0;
         top: 0;
         z-index: 999;
         padding-top: 15px;
         padding-left: 15px;
         background-color: #121C3E;
-        width: 20%;
+        width: 22%;
+        overflow-y: auto;
         height: 100vh;
-        
+        transition: width 0.3s ease;
+
         .adminProfile {
             background-color: #FFC20E;
             height: 50px;
@@ -45,14 +54,46 @@ body{
         //     color: black !important;
         // }
     }
+    .sidebarSection.hidden{
+        left: -100%;
+    }
+    .sidebarSection::-webkit-scrollbar {
+        width: 5px;
+    }
 
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #3498db;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #2980b9;
+    }
+
+    // .rightSection {
+    //     @media (min-width: 576px) and (max-width: 991px) {
+    //         width: 100% !important;
+    //     }
+    // }
+
+    .rightSection.full-width{
+        width: 100%;
+    }
     .rightSection {
-        width: 80%;
-        height: 100vh;
+        margin-left: 22%;
+        width: 78%;
+        height: 100%;
+        transition: width 0.3s ease;
+
         nav {
-            .menuIcon{
+            .menuIcon {
                 cursor: pointer;
             }
+
             .navserach input {
                 height: 40px !important;
                 width: 350px;
@@ -72,7 +113,9 @@ body{
                 right: 380px;
             }
 
-            .navIcons .alertIcon,.settingIcon,.messageIcon {
+            .navIcons .alertIcon,
+            .settingIcon,
+            .messageIcon {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -80,7 +123,10 @@ body{
                 border-radius: 50%;
                 height: 43px;
             }
-            .navIcons .alertIcon,.settingIcon,.messageIcon i{
+
+            .navIcons .alertIcon,
+            .settingIcon,
+            .messageIcon i {
                 font-size: 25px;
             }
 
