@@ -5,32 +5,20 @@ body {
 }
 
 .adminDashboard {
-    position: relative;
     color: white;
     background-color: #E3EDF9;
-    overflow-y: auto;
-    height: 100vh;
 
     p {
         margin-bottom: 0px;
     }
-    // .sidebarSection {
-    //     @media (min-width: 576px) and (max-width: 991px) {
-    //        display: none;
-    //     }
-    // }
+
     .sidebarSection {
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 999;
+        width: 300px;
         padding-top: 15px;
         padding-left: 15px;
         background-color: #121C3E;
-        width: 22%;
         overflow-y: auto;
         height: 100vh;
-        transition: width 0.3s ease;
 
         .adminProfile {
             background-color: #FFC20E;
@@ -43,20 +31,37 @@ body {
             }
         }
 
+        .dashboard {
+            margin-right: 15px;
+        }
+
+        .dashboard>div {
+            margin-top: 8px;
+            width: 100%;
+            height: 35px;
+            transform: none !important;
+            border-radius: 10px;
+            padding-bottom: 2px;
+            cursor: pointer;
+
+            p {
+                font-size: 14px !important;
+            }
+        }
+
         .dashboard>div img:hover {
             img {
                 filter: invert(-1);
             }
         }
+    }
+    .sidebarSection {
+        @media (min-width:600px) and (max-width: 992px) {
+            display: none !important;
+        }
+    }
 
-        // .dashboard>div:hover {
-        //     background-color: #FFC20E;
-        //     color: black !important;
-        // }
-    }
-    .sidebarSection.hidden{
-        left: -100%;
-    }
+
     .sidebarSection::-webkit-scrollbar {
         width: 5px;
     }
@@ -74,25 +79,18 @@ body {
         background-color: #2980b9;
     }
 
-    // .rightSection {
-    //     @media (min-width: 576px) and (max-width: 991px) {
-    //         width: 100% !important;
-    //     }
-    // }
 
-    .rightSection.full-width{
-        width: 100%;
-    }
     .rightSection {
-        margin-left: 22%;
-        width: 78%;
+        width: calc(100vw - 300px);
         height: 100%;
-        transition: width 0.3s ease;
 
         nav {
             .menuIcon {
                 cursor: pointer;
             }
+            // .navserach{
+            //     height: 60px;
+            // }
 
             .navserach input {
                 height: 40px !important;
@@ -104,13 +102,20 @@ body {
             }
 
             .navserach>div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+                height: 40px;
                 border-top-left-radius: 8px;
                 border-bottom-left-radius: 8px;
             }
 
             .navserach img {
-                position: absolute;
-                right: 380px;
+                position: relative;
+                right: 38px;
+                width: 25px;
+                height: 25px;
             }
 
             .navIcons .alertIcon,

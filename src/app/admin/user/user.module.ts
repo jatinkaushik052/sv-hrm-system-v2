@@ -8,6 +8,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertComponent } from '../../alert/alert/alert.component';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
     UserComponent,
     UserListComponent,
     EditUserComponent,
-    AddUserComponent
+    AddUserComponent,
+    AlertComponent
+
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
     RouterLink,
     RouterOutlet,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class UserModule { }

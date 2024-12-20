@@ -20,17 +20,19 @@ export class SignINComponent implements OnInit {
   isPasswordVisible: boolean = false;
   isEye: boolean = false;
 
-  constructor(private http: UserService, private router: Router) { }
+  constructor(private http: UserService, private router: Router) { 
+   
+  }
 
   ngOnInit(): void {
 
   }
 
   onLogin() {
-
+  
     const loginData = this.loginForm.value;
     console.log(loginData)
-    debugger;
+    // debugger;
     const payload = {
       mobileno: (this.loginForm.value?.mobileNo),
       password: this.loginForm.value?.password,
@@ -39,10 +41,20 @@ export class SignINComponent implements OnInit {
 
     this.http.login(payload).subscribe({
       next: (res: any) => {
-        if (res) {
-          // alert("Login successfully")
-          localStorage.setItem('login', JSON.stringify(res));
-          this.router.navigate(['/admin']);
+
+        // if (res && res.token) {
+        //   // Save the token in localStorage
+        //   localStorage.setItem('login', res.token);
+        //   // Navigate to protected page (admin page)
+        //   this.router.navigate(['/admin']);
+
+
+          if (res) {
+            // alert("Login successfully")
+            // localStorage.setItem('login', JSON.stringify(res)); 
+            localStorage.setItem('login', res.token);
+
+            this.router.navigate(['/admin']);
         }
         else {
           alert("Incorrect data")

@@ -1,0 +1,16 @@
+<div *ngIf="is_add_modal" class="modal fade show" id="staticBackdrop" data-bs-backdrop="static" style="display: block;"
+    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-black" id="staticBackdropLabel">Data Saved Successfully</h1>
+
+            </div>
+
+            <div class="modal-footer">
+                <button (click)="add_closeModal()" type="button" class="btn btn-success"
+                    data-bs-dismiss="modal">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>

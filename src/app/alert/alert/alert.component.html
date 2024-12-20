@@ -1,0 +1,28 @@
+<!-- <div class="alert alert-success">
+  <strong>Success!</strong>{{message}}
+</div> -->
+
+<div class="modal fade show" id="staticBackdrop" data-bs-backdrop="static" style="display: block;"
+  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 *ngIf="popupType== 'add'" class="modal-title fs-5 text-black" id="staticBackdropLabel">Data Saved Successfully
+        </h1>
+        <h1 *ngIf="popupType== 'edit'" class="modal-title fs-5 text-black" id="staticBackdropLabel">Data Updated Successfully</h1>
+
+      </div>
+
+      <div class="modal-footer">
+        @if(popupType == 'add'){
+          <button (click)="add_closeModal()" type="button" class="btn btn-success" data-bs-dismiss="modal">Okay</button>
+        }
+        @else if (popupType == 'edit') {
+
+          <button *ngIf="popupType == 'edit'" routerLink="/admin/user/user-list" (click)="add_closeModal()" type="button" class="btn btn-success" data-bs-dismiss="modal">Okay</button>
+        }
+
+      </div>
+    </div>
+  </div>
+</div>

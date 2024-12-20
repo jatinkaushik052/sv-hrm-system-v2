@@ -10,15 +10,12 @@ export class HoverEffectDirective {
     this.rendere.setStyle(this.el.nativeElement,'transition', 'all 0.3s ease');
   }
   @HostListener('mouseenter') onMouseEnter() {
-    console.log('enter')
     this.rendere.setStyle(this.el.nativeElement, 'background-color', '#FFC20E');
     this.rendere.setStyle(this.el.nativeElement, 'color', 'black');
     this.rendere.setStyle(this.el.nativeElement, 'transform', 'scale(1.1)');
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-    console.log('out')
-
     this.rendere.removeStyle(this.el.nativeElement, 'background-color');
     this.rendere.removeStyle(this.el.nativeElement, 'transform');
   }

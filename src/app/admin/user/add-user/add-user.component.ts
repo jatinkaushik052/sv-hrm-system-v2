@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { flush } from '@angular/core/testing';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,13 +11,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddUserComponent implements OnInit {
 
+  isAdd: boolean = false
+  isUpdate: boolean = false
+
   userForm: FormGroup = new FormGroup({
     id: new FormControl(0),
-    name: new FormControl(),
-    username: new FormControl(),
-    salary: new FormControl(),
-    email: new FormControl()
+    name: new FormControl('',[Validators.required,Validators.minLength(3)]),
+    username: new FormControl('',[Validators.required,Validators.minLength(3)]),
+    salary: new FormControl('',[Validators.required,Validators.minLength(3)]),
+    email: new FormControl('',[Validators.required,Validators.email])
   })
+
+  is_add_modal: boolean = false;
 
   userData: any[] = [];
   currentId = 0;
@@ -54,6 +60,8 @@ export class AddUserComponent implements OnInit {
   }
 
   onAdd() {
+    this.isAdd = true
+    this.add_openModal();
     const payload = {
       id: 0,  // Default value, will be updated after checking localStorage
       name: this.userForm.value?.name,
@@ -74,10 +82,12 @@ export class AddUserComponent implements OnInit {
       parseData.push(payload);
       localStorage.setItem('userList', JSON.stringify(parseData));
     }
-    alert('Added successfully');
+    this.userForm.reset();
   }
 
   onUpdate() {
+    this.isUpdate = true
+    this.add_openModal();
     const currentData = this.userData.find((m: any) => m.id === Number(this.currentId));
     debugger;
     if (currentData !== undefined) {
@@ -90,8 +100,20 @@ export class AddUserComponent implements OnInit {
 
       // Log updated data for debugging
       console.log('Updated User Data: ', this.userData);
-      alert('Updated successfully');
     }
-   
+
+  }
+
+  // modal
+  add_openModal() {
+    this.is_add_modal = true;
+  }
+  add_closeModal() {
+    this.is_add_modal = false
+  }
+
+  closePopupHere(event: any) {
+    this.isAdd = event
+    this.isUpdate = event
   }
 }

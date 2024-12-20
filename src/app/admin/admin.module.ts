@@ -1,24 +1,28 @@
-import { HostListener, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HoverEffectDirective } from '../directives/hover-effect.directive';
+import { LeaveManagementComponent } from './leave-management/leave-management.component';
+
+
 
 
 @NgModule({
   declarations: [
     AdminComponent,
     DashboardComponent,
-    HoverEffectDirective
+    HoverEffectDirective,
+    LeaveManagementComponent,
+
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     HttpClientModule,
-    
-  ]
+  ],
 })
 export class AdminModule { }

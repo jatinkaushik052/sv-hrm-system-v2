@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
+import { LeaveManagementComponent } from './leave-management/leave-management.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
       {
         path: 'user',
         loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+      },
+      {
+        path:'leave-management',
+        component: LeaveManagementComponent
       }
     ]
   }

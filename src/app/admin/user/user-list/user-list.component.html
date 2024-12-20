@@ -1,26 +1,102 @@
-<table class="table table-success  table-hover">
-    <thead>
-      <tr>
-        <th scope="col">S.No</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Username</th>
-        <th scope="col">Salary</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of userList" >
-        <td>{{item.id}}</td>
-        <td>{{item.name | uppercase}}</td>
-        <td>{{item.email | lowercase}}</td>
-        <td>{{item.username | lowercase}}</td>
-        <td>{{item.salary | currency: 'USD'}}</td>
-        <td >
-            <button type="button" (click)="onEdit(item.id)" class="btn btn-primary">Edit</button>
-            <button type="button" (click)="onDelete(item.id)" class="btn btn-danger ms-2">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
 
+<table class="table table-success  table-hover">
+  <thead>
+    <tr>
+      <th scope="col">S.No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Username</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      @for (item of userList; track $index) {
+        <tr>
+        <td>{{$index+1}}</td>
+      <td>{{item.name | uppercase}}</td>
+      <td>{{item.email | lowercase}}</td>
+      <td>{{item.username | lowercase}}</td>
+      <td>{{item.salary | currency: 'USD'}}</td>
+      <td>
+        <button type="button" (click)="onView(item.id)" class="btn btn-info ">View</button>
+        <button type="button" (click)="onEdit(item.id)" class="btn btn-primary ms-2">Edit</button>
+        <button type="button" (click)="onDelete(item.id)" class="btn btn-danger ms-2">Delete</button>
+      </td>
+    </tr>
+
+      }
+    <!-- <tr *ngFor="let item of userList">
+      <td>{{item.id}}</td>
+      <td>{{item.name | uppercase}}</td>
+      <td>{{item.email | lowercase}}</td>
+      <td>{{item.username | lowercase}}</td>
+      <td>{{item.salary | currency: 'USD'}}</td>
+      <td>
+        <button type="button" (click)="onView(item.id)" class="btn btn-info ">View</button>
+        <button type="button" (click)="onEdit(item.id)" class="btn btn-primary ms-2">Edit</button>
+        <button type="button" (click)="onDelete(item.id)" class="btn btn-danger ms-2">Delete</button>
+      </td>
+    </tr> -->
+  </tbody>
+</table>
+
+
+<!-- view page popup -->
+<div *ngIf=" isView" class="modal fade show" id="exampleModal" data-bs-backdrop="static" style="display: block;"
+  data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">User Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="close_view_popup()"></button>
+      </div>
+      <div class="modal-body text-black">
+
+        <form action="" class="row gy-4" *ngIf="currentIdValue">
+          <div class="col-6 d-flex flex-column">
+            <label for="">Name :</label>{{currentIdValue.name}}
+          </div>
+          <div class="col-6 d-flex flex-column">
+            <label for="">Username :</label>{{currentIdValue.username}}
+          </div>
+          <div class="col-6 d-flex flex-column">
+            <label for="">Email :</label>{{currentIdValue.email}}
+          </div>
+          <div class="col-6 d-flex flex-column">
+            <label for="">Salary :</label>${{currentIdValue.salary}}
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button (click)="close_view_popup()" type="button" class="btn btn-success" data-bs-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- delete modal -->
+<div *ngIf="is_delete_pop" class="modal fade show" id="exampleModal" data-bs-backdrop="static" style="display: block;"
+  data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-black" id="staticBackdropLabel">Are You Sure?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="close_modal()"></button>
+
+      </div>
+      <div class="modal-body text-black">
+        You want to Delete.
+      </div>
+      <div class="modal-footer">
+        <button (click)="close_modal()" routerLink="/admin/user/user-list" type="button" class="btn btn-success"
+          data-bs-dismiss="modal">No</button>
+        <button routerLink="/admin/user/user-list" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+          (click)="deleteData()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
