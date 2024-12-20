@@ -15,14 +15,15 @@ export class AdminComponent {
   constructor(private router: Router, private loginStatus: LoginStatusService) { }
 
   ngOnInit(): void {
-   
-   // Initial check, in case the user is not logged in and directly tries to access this page
+    // Check if the user is logged in when trying to access the admin page
     if (!this.loginStatus.isLoggedIn()) {
-      this.router.navigate(['admin']);  // Redirect to login if not logged in
+      this.router.navigate(['login']);  // Redirect to login page if not logged in
+    } else {
+      // Push a new state to prevent navigating back to the login page
+      window.history.pushState(null, '', window.location.href);
     }
   }
-
-  // Listen for the browser's back button or history state changes
+  
   @HostListener('window:popstate', ['$event'])
   onPopState(event: PopStateEvent) {
     this.logoutAndRedirect();
@@ -34,16 +35,13 @@ export class AdminComponent {
     this.router.navigate(['login']);  // Redirect to the login page
   }
   
-  // sidebar 
+  // sidebar toggle function
   onSidebarClick() {
     this.isSidebar = !this.isSidebar;
-    console.log(this.isSidebar)
   }
 
   onLogout() {
-
     localStorage.removeItem('login');
-
     this.router.navigate(['login']);
   }
 }

@@ -6,13 +6,19 @@ import { Injectable } from '@angular/core';
 export class LoginStatusService {
 
   constructor() { }
-  // Check if the user is logged in by looking for a token in sessionStorage
+
+  // Checks if the user is logged in by checking the token in localStorage
   isLoggedIn(): boolean {
-    return !!sessionStorage.getItem('login');  // Checks if a login token exists
+    return localStorage.getItem('login') !== null; // Check if login token exists
   }
 
-  // Log the user out by removing the token from sessionStorage
-  logout(): void {
-    sessionStorage.removeItem('login');  // Clear the authentication token
+  // Logs the user in by storing the token in localStorage
+  login(token: string) {
+    localStorage.setItem('login', token); // Store the login token
+  }
+
+  // Logs the user out by removing the token from localStorage
+  logout() {
+    localStorage.removeItem('login');
   }
 }

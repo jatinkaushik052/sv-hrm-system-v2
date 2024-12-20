@@ -14,6 +14,11 @@ const routes: Routes = [
     loadChildren:()=> import('./admin/admin.module').then(m=> m.AdminModule),canActivate :[authGuard]
   },
   {
+    path:'',
+    redirectTo: 'admin',
+    pathMatch: 'full'
+  },
+  {
     path:'**',
     component: PageNotFoundComponent
   }
