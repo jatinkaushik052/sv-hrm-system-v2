@@ -61,7 +61,7 @@ export class AddUserComponent implements OnInit {
 
   onAdd() {
     this.isAdd = true
-    this.add_openModal();
+    this.add_openModal(); 
     const payload = {
       id: 0,  // Default value, will be updated after checking localStorage
       name: this.userForm.value?.name,
