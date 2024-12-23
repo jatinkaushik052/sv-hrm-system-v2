@@ -1,0 +1,79 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Department Id</th>
+        <th scope="col">Department Name</th>
+        <th scope="col">Department Logo</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (item of emp_depart_list; track $index) {
+            <tr>
+                <td>{{$index+1}}</td>
+                <td>{{item.departmentName}}</td>
+                <td>{{item.departmentLogo}}</td>
+                <td>
+                    <button type="button" (click)="onView(item.departmentId)" class="btn btn-info ">View</button>
+                    <button type="button" (click)="onEdit(item)" class="btn btn-primary ms-2">Edit</button>
+                    <button type="button" (click)="onDelete(item.departmentId)" class="btn btn-danger ms-2">Delete</button>
+                  </td>
+            </tr>
+        }
+    </tbody>
+  </table>
+
+
+  <div *ngIf=" isView" class="modal fade show" id="exampleModal" data-bs-backdrop="static" style="display: block;"
+  data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-black" id="staticBackdropLabel">Employee Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="close_popup()"></button>
+      </div>
+      <div class="modal-body text-black">
+
+        <form action="" class="row gy-4" *ngIf="currentIdValue">
+            <div class="col-6 d-flex flex-column">
+                <label for="">Department Id :</label>{{currentIdValue.departmentId}}
+              </div>
+          <div class="col-6 d-flex flex-column">
+            <label for="">Department Name :</label>{{currentIdValue.departmentName}}
+          </div>
+          <div class="col-6 d-flex flex-column">
+            <label for="">Department Logo :</label>{{currentIdValue.departmentLogo}}
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button (click)="close_popup()" type="button" class="btn btn-success" data-bs-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- delete modal -->
+<div *ngIf="is_delete_pop" class="modal fade show" id="exampleModal" data-bs-backdrop="static" style="display: block;"
+  data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-black" id="staticBackdropLabel">Are You Sure?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="close_modal()"></button>
+
+      </div>
+      <div class="modal-body text-black">
+        You want to Delete.
+      </div>
+      <div class="modal-footer">
+        <button (click)="close_modal()" routerLink="/admin/emp-department/view-emp-depart" type="button" class="btn btn-success"
+          data-bs-dismiss="modal">No</button>
+        <button routerLink="/admin/emp-department/view-emp-depart" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+          (click)="deleteData()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -20,6 +20,10 @@ const routes: Routes = [
       {
         path:'leave-management',
         component: LeaveManagementComponent
+      },
+      {
+        path:'emp-department',
+        loadChildren:() => import('./employee-depart/employee-depart.module').then(m=> m.EmployeeDepartModule)
       }
     ]
   }

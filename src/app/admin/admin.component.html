@@ -1,4 +1,4 @@
-<div class="adminDashboard d-flex">
+<div class="adminDashboard d-flex ">
     <div *ngIf="isSidebar" class="sidebarSection">
         <div class="sidebarHeader">
             <img src="/img/loginLogo.png" width="60%" height="50px" alt="">
@@ -32,10 +32,15 @@
                 <img src="/dashboardIcon/book-open.png" width="20px" height="20px" alt="">
                 <p style="font-size: 14px;">Leave Management</p>
             </div>
-            <div appHoverEffect class=" d-flex align-items-center text-white px-3 gap-1">
+            <div routerLink="emp-department"  (click)="onAccordion()" appHoverEffect class=" d-flex align-items-center text-white px-3 gap-1" data-toggle="collapse" data-target="#demo">
                 <img src="/dashboardIcon/Vector.png" width="20px" height="20px" alt="">
-                <p style="font-size: 14px;">Performance Management</p>
+                <p style="font-size: 14px;">Employee Department</p>
             </div>
+            <!-- <div *ngIf="is_Accordion" id="demo" class="container collapse show d-flex flex-column">
+                <div style="cursor: pointer;" routerLink="emp-department/add-emp-depart" >Add Department</div>
+                <div style="cursor: pointer;" routerLink="emp-department/view-emp-depart">View Department</div>
+            </div> -->
+            
         </div>
         <div class="dashboard mt-2 ">
             <p style="font-size: 12px;">Recruitment</p>
@@ -59,7 +64,7 @@
         </div>
     </div>
 
-    <div class="container rightSection px-4">
+    <div class="rightSection px-4">
         <nav class="d-flex justify-content-between align-items-center pt-4">
             <div (click)="onSidebarClick()" class="menuIcon d-flex align-items-center">
                 <img src="/dashboardIcon/Group 47.svg" width="30px" height="30px" alt="">

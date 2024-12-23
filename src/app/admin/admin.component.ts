@@ -11,6 +11,7 @@ import { LoginStatusService } from '../services/login-status.service';
 export class AdminComponent {
 
   isSidebar: boolean = true;
+  is_Accordion: boolean= false;
 
   constructor(private router: Router, private loginStatus: LoginStatusService) { }
 
@@ -39,7 +40,9 @@ export class AdminComponent {
   onSidebarClick() {
     this.isSidebar = !this.isSidebar;
   }
-
+  onAccordion(){
+    this.is_Accordion =!this.is_Accordion;
+  }
   onLogout() {
     localStorage.removeItem('login');
     this.router.navigate(['login']);

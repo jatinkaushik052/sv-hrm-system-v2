@@ -1,0 +1,37 @@
+<div class="row border border-1 shadow-lg py-2">
+    <div class="col-12">
+        <h3 class="text-center text-black pb-4">
+            Enter Employee Department
+        </h3>
+        <div class="d-flex align-items-center justify-content-center text-black">
+
+            <form [formGroup]="department_form" novalidate class="row g-3">
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Department Name</label>
+                    <input formControlName="departmentName" type="text" class="form-control" id="inputEmail4">
+                    <div class="text-danger">
+                        @if(department_form.controls['departmentName'].touched && department_form.controls['departmentName'].errors?.['required']){
+                        <span>This field is required</span>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">Department Logo</label>
+                    <input formControlName="departmentLogo" type="text" class="form-control">
+                    <div class="text-danger">
+                        @if(department_form.controls['departmentLogo'].touched &&
+                        department_form.controls['departmentLogo'].errors?.['required']){
+                        <span>This field is required</span>
+                        }
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button [disabled]="department_form.invalid" *ngIf="currentId === 0"  class="button" class="btn btn-primary"
+                        (click)="onAdd()">Add</button>
+                    <button class="button" *ngIf="currentId !== 0" class="btn btn-warning"
+                        (click)="onUpdate()">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

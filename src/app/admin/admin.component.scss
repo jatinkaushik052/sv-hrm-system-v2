@@ -7,6 +7,7 @@ body {
 .adminDashboard {
     color: white;
     background-color: #E3EDF9;
+    justify-content: space-around;
 
     p {
         margin-bottom: 0px;
@@ -55,11 +56,7 @@ body {
             }
         }
     }
-    .sidebarSection {
-        @media (min-width:600px) and (max-width: 992px) {
-            display: none !important;
-        }
-    }
+    
 
 
     .sidebarSection::-webkit-scrollbar {
