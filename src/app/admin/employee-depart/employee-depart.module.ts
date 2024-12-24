@@ -6,7 +6,7 @@ import { AddEmpDepartComponent } from './add-emp-depart/add-emp-depart.component
 import { ViewEmpDepartComponent } from './view-emp-depart/view-emp-depart.component';
 import { EmployeeDepartComponent } from './employee-depart.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     EmployeeDepartRoutingModule,
     RouterOutlet,
     RouterLink,
+    FormsModule
    
   ]
 })

@@ -46,5 +46,9 @@
             color: white;
         }
     }
-
+    @media (min-width: 360px) and (max-width: 768px) {
+        form {
+            width: 75% !important;
+        }
+    }
 }

@@ -1,4 +1,16 @@
-<table class="table">
+<div class="table_section">
+  <div class="table_item_search">
+    <input [(ngModel)]="searchItem"
+    (input)="filterData()"
+     type="text" name="" id="" placeholder="Search....">
+  </div>
+  <div *ngIf="isLoader" class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <table class="table">
+   
     <thead>
       <tr>
         <th scope="col">Department Id</th>
@@ -8,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-        @for (item of emp_depart_list; track $index) {
+        @for (item of filteredData; track $index) {
             <tr>
                 <td>{{$index+1}}</td>
                 <td>{{item.departmentName}}</td>
@@ -22,6 +34,9 @@
         }
     </tbody>
   </table>
+
+</div>
+
 
 
   <div *ngIf=" isView" class="modal fade show" id="exampleModal" data-bs-backdrop="static" style="display: block;"

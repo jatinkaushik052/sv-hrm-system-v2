@@ -14,9 +14,6 @@ export class EmpdepartmentService {
   getEmpDepartment(){
     return this.http.get('https://projectapi.gerasim.in/api/EmployeeManagement/GetParentDepartment');
   }
-  getEmpDeprtById(id: number){
-    return this.http.get('')
-  }
   updateEmpDepart(obj: any){
     return this.http.post('https://projectapi.gerasim.in/api/EmployeeManagement/UpdateDepartment',obj);
   }

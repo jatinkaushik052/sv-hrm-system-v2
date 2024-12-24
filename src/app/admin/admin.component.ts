@@ -10,8 +10,9 @@ import { LoginStatusService } from '../services/login-status.service';
 })
 export class AdminComponent {
 
-  isSidebar: boolean = true;
+  // isSidebar: boolean = true;
   is_Accordion: boolean= false;
+  sidebarOpen: boolean= false;
 
   constructor(private router: Router, private loginStatus: LoginStatusService) { }
 
@@ -24,7 +25,9 @@ export class AdminComponent {
       window.history.pushState(null, '', window.location.href);
     }
   }
-  
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
   @HostListener('window:popstate', ['$event'])
   onPopState(event: PopStateEvent) {
     this.logoutAndRedirect();
@@ -37,9 +40,9 @@ export class AdminComponent {
   }
   
   // sidebar toggle function
-  onSidebarClick() {
-    this.isSidebar = !this.isSidebar;
-  }
+  // onSidebarClick() {
+  //   this.isSidebar = !this.isSidebar;
+  // }
   onAccordion(){
     this.is_Accordion =!this.is_Accordion;
   }

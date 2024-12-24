@@ -7,7 +7,15 @@ body {
 .adminDashboard {
     color: white;
     background-color: #E3EDF9;
+    justify-content: center;
     justify-content: space-around;
+
+    .sidebarClose {
+        display: none;
+        position: absolute;
+        right: 20px;
+        top: 30px;
+    }
 
     p {
         margin-bottom: 0px;
@@ -20,6 +28,10 @@ body {
         background-color: #121C3E;
         overflow-y: auto;
         height: 100vh;
+        top: 0;
+        left: 0;
+        transform: translateX(0);
+        transition: transform 0.3s ease;
 
         .adminProfile {
             background-color: #FFC20E;
@@ -56,7 +68,29 @@ body {
             }
         }
     }
-    
+
+    .sidebarSection.active {
+        position: absolute;
+        transform: translateX(-100%);
+        z-index: 99;
+    }
+    @media (max-width: 992px) {
+        .sidebarSection {
+            // display: none;
+            position: absolute;
+            z-index: 99;
+        }
+
+        .sidebarSection.active {
+            display: block;
+            position: absolute;
+        }
+
+        .sidebarClose {
+            display: block;
+        }
+    }
+
 
 
     .sidebarSection::-webkit-scrollbar {
@@ -78,13 +112,16 @@ body {
 
 
     .rightSection {
-        width: calc(100vw - 300px);
-        height: 100%;
+        // width: calc(100vw - 300px);
+        width: 100%;
+        height: 100vh;
+        overflow-y: auto;
 
         nav {
             .menuIcon {
                 cursor: pointer;
             }
+
             // .navserach{
             //     height: 60px;
             // }
@@ -124,6 +161,7 @@ body {
                 width: 43px;
                 border-radius: 50%;
                 height: 43px;
+                cursor: pointer;
             }
 
             .navIcons .alertIcon,
@@ -132,6 +170,13 @@ body {
                 font-size: 25px;
             }
 
+            @media (min-width: 360px) and (max-width: 768px) {
+                .navserach {
+                    display: none !important;
+                }
+            }
         }
+
     }
+
 }
