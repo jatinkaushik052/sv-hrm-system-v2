@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { LeaveManagementComponent } from './leave-management/leave-management.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
       {
         path:'leave-management',
         component: LeaveManagementComponent
+      },
+      {
+        path:'project',
+        component: ProjectsComponent
       },
       {
         path:'emp-department',

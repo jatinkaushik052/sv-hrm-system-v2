@@ -7,6 +7,7 @@ import { HttpClientModule, } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HoverEffectDirective } from '../directives/hover-effect.directive';
 import { LeaveManagementComponent } from './leave-management/leave-management.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 
 
@@ -17,6 +18,7 @@ import { LeaveManagementComponent } from './leave-management/leave-management.co
     DashboardComponent,
     HoverEffectDirective,
     LeaveManagementComponent,
+    ProjectsComponent,
 
   ],
   imports: [
