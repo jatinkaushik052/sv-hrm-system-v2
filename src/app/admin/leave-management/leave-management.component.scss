@@ -2,6 +2,12 @@
     width: calc(50% - 20px);
     margin-top: 20px;
 }
+.leave_card {
+  .card:hover{
+    cursor: pointer;
+    box-shadow: 0 0 10px rgb(141, 138, 138);
+  }
+}
 
 @media (min-width: 360px) and (max-width: 768px) {
     .leave_table {

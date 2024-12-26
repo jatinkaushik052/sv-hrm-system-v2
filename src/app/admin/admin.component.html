@@ -14,9 +14,9 @@
             </div>
         </div>
 
-        <div class="dashboard mt-2 ">
+        <div class="dashboard mt-2">
             <p style="font-size: 12px;">Features</p>
-            <div ngClass="active" appHoverEffect routerLink="dashboard" class="mt-1  d-flex align-items-center text-white px-3 gap-1">
+            <div (click)="toggleSidebar()" [ngClass]="{'active': menuItemId ==='dashboard'}"  appHoverEffect routerLink="dashboard" class="mt-1  d-flex align-items-center text-white px-3 gap-1">
                 <img src="/dashboardIcon/Vector (1).png" width="20px" height="20px" alt="" style="filter: invert(1);">
                 <p style="font-size: 14px;">Dashboard</p>
             </div>
@@ -25,15 +25,15 @@
 
         <div class="dashboard mt-2 ">
             <p style="font-size: 12px;">Organization</p>
-            <div   appHoverEffect routerLink="user" class=" d-flex align-items-center text-white px-3 gap-1">
+            <div (click)="toggleSidebar()"    appHoverEffect routerLink="user" class=" d-flex align-items-center text-white px-3 gap-1">
                 <img src="/dashboardIcon/user-alt.png" width="20px" height="20px" alt="">
                 <p style="font-size: 14px;">Employee Management</p>
             </div>
-            <div  routerLink="leave-management" appHoverEffect class=" d-flex align-items-center text-white px-3  gap-1">
+            <div (click)="toggleSidebar()" routerLink="leave-management" appHoverEffect class=" d-flex align-items-center text-white px-3  gap-1">
                 <img src="/dashboardIcon/book-open.png" width="20px" height="20px" alt="">
                 <p style="font-size: 14px;">Leave Management</p>
             </div>
-            <div  routerLink="emp-department"  (click)="onAccordion()" appHoverEffect class=" d-flex align-items-center text-white px-3 gap-1" data-toggle="collapse" data-target="#demo">
+            <div (click)="toggleSidebar()" routerLink="emp-department"  (click)="onAccordion()" appHoverEffect class=" d-flex align-items-center text-white px-3 gap-1" data-toggle="collapse" data-target="#demo">
                 <img src="/dashboardIcon/Vector.png" width="20px" height="20px" alt="">
                 <p style="font-size: 14px;">Employee Department</p>
             </div>
@@ -41,18 +41,18 @@
                 <div style="cursor: pointer;" routerLink="emp-department/add-emp-depart" >Add Department</div>
                 <div style="cursor: pointer;" routerLink="emp-department/view-emp-depart">View Department</div>
             </div> -->
-            <div  routerLink="project" appHoverEffect class=" d-flex align-items-center text-white px-3  gap-1">
+            <div (click)="toggleSidebar()" routerLink="project" appHoverEffect class=" d-flex align-items-center text-white px-3  gap-1">
                 <img src="/dashboardIcon/Vector (5).png" width="20px" height="20px" alt="">
                 <p style="font-size: 14px;">Projects</p>
             </div>
         </div>
         <div class="dashboard mt-2 ">
             <p style="font-size: 12px;">Recruitment</p>
-            <div  appHoverEffect class="d-flex align-items-center text-white px-3 gap-1">
+            <div (click)="toggleSidebar()" appHoverEffect class="d-flex align-items-center text-white px-3 gap-1">
                 <img src="/dashboardIcon/Vector (3).png" width="20px" height="20px" alt="">
                 <p style="font-size: 14px;">Jobs</p>
             </div>
-            <div  appHoverEffect class=" d-flex align-items-center text-white px-3  gap-1">
+            <div (click)="toggleSidebar()" appHoverEffect class=" d-flex align-items-center text-white px-3  gap-1">
                 <img src="/dashboardIcon/Vector (4).png" width="20px" height="20px" alt="">
                 <p style="font-size: 14px;">Candidates</p>
             </div>
@@ -61,6 +61,7 @@
                 <p style="font-size: 14px;">Resumes</p>
             </div> -->
         </div>
+
         <div (click)="onLogout()"
             class="mb-2 mt-3 me-3 d-flex align-items-center gap-1 bg-danger py-1 justify-content-center rounded btn ">
             <img src="/dashboardIcon/Vector (7).png" width="15px" height="15px" alt="">
@@ -74,7 +75,13 @@
                 <img src="/dashboardIcon/Group 47.svg" width="30px" height="30px" alt="">
             </div>
             <div class="navserach  d-flex align-items-center">
-                <div class="bg-primary py-2 px-2">All Candidates</div>
+                    <select name="" id="" class="bg-primary py-2 px-2">
+                        <option value="">All Candidates</option>
+                        <option value="">Frontend Developer</option>
+                        <option value="">Backend Developer</option>
+                        <option value="">Full-stack Developer</option>
+
+                    </select>
                 <input type="text" name="" id="" placeholder="search">
                 <img src="/dashboardIcon/search.png" alt="">
             </div>

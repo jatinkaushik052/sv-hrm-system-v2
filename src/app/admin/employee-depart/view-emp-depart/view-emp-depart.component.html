@@ -9,14 +9,14 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-  <table class="table">
+  <table mat-table [dataSource]="filteredData"  class="table">
    
     <thead>
       <tr>
-        <th scope="col">Department Id</th>
-        <th scope="col">Department Name</th>
-        <th scope="col">Department Logo</th>
-        <th scope="col">Action</th>
+        <th mat-header-cell *matHeaderCellDef scope="col">Department Id</th>
+        <th mat-header-cell *matHeaderCellDef scope="col">Department Name</th>
+        <th mat-header-cell *matHeaderCellDef scope="col">Department Logo</th>
+        <th mat-header-cell *matHeaderCellDef scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -37,6 +37,15 @@
 
 </div>
 
+<mat-paginator 
+[length]="filteredData.length"
+[pageSize]="7"
+[showFirstLastButtons]="true"
+[pageSizeOptions]="[5,10,15]"
+[pageIndex]="currentPage"
+(page)="handlePageEvent($event)">
+
+</mat-paginator>
 
 
   <div *ngIf=" isView" class="modal fade show" id="exampleModal" data-bs-backdrop="static" style="display: block;"

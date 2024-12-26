@@ -14,15 +14,33 @@ export class UserListComponent implements OnInit {
   is_delete_pop: boolean= false;
   isView: boolean= false;
   constructor(private router: Router) { }
+  filteredData: any[] = []
+  searchItem: string = '';
+
 
   ngOnInit(): void {
     this.getData();
   }
-
+ filterData() {
+    if (this.searchItem.trim() === '') {
+      // when no value enter in searchbox.......
+      this.filteredData = [...this.userList];
+    }
+    else {
+      this.filteredData = this.userList.filter((item) => {
+        if(item.name.toLowerCase().includes(this.searchItem.toLowerCase()) ||
+        item.username.toLowerCase().includes(this.searchItem.toLowerCase())){
+          return item
+        }
+      })
+    }
+  }
   getData() {
     const getUserList = localStorage.getItem('userList');
     if (getUserList != null) {
-      this.userList = JSON.parse(getUserList);
+      this.userList = JSON.parse(getUserList).reverse();
+      this.filteredData= [...this.userList];
+
     }
   }
   onEdit(id: number) {

@@ -10,11 +10,12 @@ import { LoginStatusService } from '../services/login-status.service';
 })
 export class AdminComponent {
 
-  // isSidebar: boolean = true;
   is_Accordion: boolean= false;
   sidebarOpen: boolean= false;
-
+  menuItemId:string='dashboard'
+  
   constructor(private router: Router, private loginStatus: LoginStatusService) { }
+
 
   ngOnInit(): void {
     // Check if the user is logged in when trying to access the admin page
@@ -25,6 +26,7 @@ export class AdminComponent {
       window.history.pushState(null, '', window.location.href);
     }
   }
+
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
   }
@@ -38,11 +40,7 @@ export class AdminComponent {
     this.loginStatus.logout();  // This should remove the authentication token or session
     this.router.navigate(['login']);  // Redirect to the login page
   }
-  
-  // sidebar toggle function
-  // onSidebarClick() {
-  //   this.isSidebar = !this.isSidebar;
-  // }
+ 
   onAccordion(){
     this.is_Accordion =!this.is_Accordion;
   }

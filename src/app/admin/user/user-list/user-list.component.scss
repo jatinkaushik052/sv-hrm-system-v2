@@ -1,7 +1,15 @@
 .table_section {
   width: 100%;
   overflow-x: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  .table_search_box{
+    position: absolute;
+    top: 120px;
+    right: 26px;
+    input{
+      padding: 0 7px;
+    }
+  }
 
   table {
     width: 100%;

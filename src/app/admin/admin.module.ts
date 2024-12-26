@@ -25,6 +25,7 @@ import { ProjectsComponent } from './projects/projects.component';
     CommonModule,
     AdminRoutingModule,
     HttpClientModule,
+    
   ],
 })
 export class AdminModule { }

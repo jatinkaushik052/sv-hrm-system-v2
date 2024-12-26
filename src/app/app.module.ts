@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { OnlyNumberDirective } from './directives/only-number.directive';
 import { customInterceptor } from './interceptor/custom.interceptor';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -17,9 +18,10 @@ import { customInterceptor } from './interceptor/custom.interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,  
+    HttpClientModule,
+      
   ],
-  providers: [provideHttpClient(withInterceptors([customInterceptor]))],
+  providers: [provideHttpClient(withInterceptors([customInterceptor])), provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

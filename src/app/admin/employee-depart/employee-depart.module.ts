@@ -7,7 +7,8 @@ import { ViewEmpDepartComponent } from './view-emp-depart/view-emp-depart.compon
 import { EmployeeDepartComponent } from './employee-depart.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EmployeeDepartRoutingModule,
     RouterOutlet,
     RouterLink,
-    FormsModule
-   
+    FormsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    // BrowserAnimationsModule
   ]
 })
 export class EmployeeDepartModule { }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmpdepartmentService } from '../../../services/empdepartment.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-view-emp-depart',
@@ -18,24 +19,30 @@ export class ViewEmpDepartComponent implements OnInit {
   is_delete_pop: boolean = false
   emp_details: any[] = []
   isLoader: boolean = false;
-
   filteredData: any[] = []
   searchItem: string = '';
+  currentPage = 0;
 
   ngOnInit(): void {
     this.getAllDepart();
   }
   constructor(private empService: EmpdepartmentService, private router: Router, private http: HttpClient) { }
 
+  handlePageEvent(pageEvent: PageEvent) {
+    this.currentPage=pageEvent.pageIndex;
+    console.log(pageEvent)
+  }
   filterData() {
-    if (this.searchItem === '') {
+    if (this.searchItem.trim() === '') {
       // when no value enter in searchbox.......
       this.filteredData = this.emp_depart_list;
+      return
     }
     else {
       this.filteredData = this.emp_depart_list.filter((item) => {
-        item.departmentName.toLowerCase().includes(this.searchItem.toLowerCase()) ||
-          item.departmentLogo.toLowerCase().includes(this.searchItem.toLowerCase())
+        if (item.departmentName.toLowerCase().includes(this.searchItem.toLowerCase()) || item.departmentLogo.toLowerCase().includes(this.searchItem.toLowerCase())) {
+          return item
+        }
       })
     }
   }
@@ -48,9 +55,7 @@ export class ViewEmpDepartComponent implements OnInit {
         debugger
         this.isLoader = false;
         this.emp_depart_list.reverse();
-
         this.emp_depart_list = this.emp_depart_list.slice(0, 50);
-
         this.filteredData = [...this.emp_depart_list.slice(0, 50)]
       },
       error: (err: any) => {

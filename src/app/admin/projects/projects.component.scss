@@ -1,14 +1,15 @@
-.project_section{
-    p{
+.project_section {
+    p {
         padding: 0;
         margin: 0;
     }
-    .project_heading{
+
+    .project_heading {
         color: black;
         font-weight: 600;
     }
 
-    .project_cards{
+    .project_cards {
         margin-top: 17px;
         display: flex;
         justify-content: space-around;
@@ -18,15 +19,22 @@
         white-space: nowrap;
         scroll-snap-type: x mandatory;
         padding-bottom: 10px;
-        .projectCard{
+
+        .projectCard {
             scroll-snap-align: start;
             width: 390px;
             border-radius: 14px;
             padding: 10px;
             color: black;
             background-color: white;
+            cursor: pointer;
         }
-        .projectcard_bottom{
+        .projectCard:hover {
+            box-shadow: 0 0 10px rgb(141, 138, 138);
+
+        }
+
+        .projectcard_bottom {
             margin-top: 20px;
             display: flex;
             justify-content: space-between;
@@ -34,8 +42,9 @@
             // gap: 20px;
             font-weight: 400;
         }
-       
+
     }
+
     .project_cards::-webkit-scrollbar {
         width: 200px;
         height: 6px;
