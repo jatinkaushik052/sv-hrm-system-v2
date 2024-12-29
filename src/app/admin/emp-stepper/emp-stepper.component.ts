@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-employee-stepper',
+  selector: 'app-emp-stepper',
   standalone: false,
   
-  templateUrl: './employee-stepper.component.html',
-  styleUrl: './employee-stepper.component.scss'
+  templateUrl: './emp-stepper.component.html',
+  styleUrl: './emp-stepper.component.scss'
 })
-export class EmployeeStepperComponent {
-  isLinear = false;
+export class EmpStepperComponent {
+ isLinear = false;
   employee_data_list: any[]=[];
 
   private _formBuilder = inject(FormBuilder);

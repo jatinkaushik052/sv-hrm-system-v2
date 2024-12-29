@@ -14,7 +14,6 @@
                 </div>
             </div>
         </div>
-
         <div class="dashboard mt-2">
             <p style="font-size: 12px;">Features</p>
             <div [ngClass]="{'active': menuItemId === 'dashboard'}" (click)="setActiveMenuItem('dashboard')"
@@ -37,9 +36,9 @@
                 <img src="/dashboardIcon/book-open.png" width="20px" height="20px" alt="">
                 <p style="font-size: 14px;">Leave Management</p>
             </div>
-            <div  [ngClass]="{'active': menuItemId === 'empDep'}" (click)="setActiveMenuItem('empDep')"
-                routerLink="emp-department"  appHoverEffect
-                class=" d-flex align-items-center text-white px-3 gap-1" data-toggle="collapse" data-target="#demo">
+            <div [ngClass]="{'active': menuItemId === 'empDep'}" (click)="setActiveMenuItem('empDep')"
+                routerLink="emp-department" appHoverEffect class=" d-flex align-items-center text-white px-3 gap-1"
+                data-toggle="collapse" data-target="#demo">
                 <img src="/dashboardIcon/Vector.png" width="20px" height="20px" alt="">
                 <p style="font-size: 14px;">Employee Department</p>
             </div>
@@ -48,13 +47,6 @@
                 <img src="/dashboardIcon/Vector (5).png" width="20px" height="20px" alt="">
                 <p style="font-size: 14px;">Employee Stepper</p>
             </div>
-          
-            <!-- another method to give background color  -->
-            <!-- <div  [routerLinkActive]="'active'"
-             routerLink="empStepper" appHoverEffect class=" d-flex align-items-center text-white px-3  gap-1">
-                <img src="/dashboardIcon/Vector (5).png" width="20px" height="20px" alt="">
-                <p style="font-size: 14px;">Employee Stepper</p>
-            </div> -->
         </div>
         <div class="dashboard mt-2 ">
             <p style="font-size: 12px;">Recruitment</p>
@@ -67,13 +59,13 @@
                 <p style="font-size: 14px;">Candidates</p>
             </div>
         </div>
-
+        
         <div (click)="onLogout()"
             class="mb-2 mt-3 me-3 d-flex align-items-center gap-1 bg-danger py-1 justify-content-center rounded btn ">
             <img src="/dashboardIcon/Vector (7).png" width="15px" height="15px" alt="">
             <p>Log Out</p>
         </div>
-        
+
     </div>
 
     <div class="rightSection px-4">

@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin.component';
-import { AddUserComponent } from './user/add-user/add-user.component';
 import { LeaveManagementComponent } from './leave-management/leave-management.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { EmployeeStepperComponent } from '../employee-stepper/employee-stepper.component';
+import { EmpStepperComponent } from './emp-stepper/emp-stepper.component';
 
 const routes: Routes = [
   {
@@ -25,7 +23,7 @@ const routes: Routes = [
       },
       {
         path:'empStepper',
-        component: EmployeeStepperComponent
+        loadChildren:()=> import('./emp-stepper/emp-stepper.module').then(m=> m.EmpStepperModule)
       },
       {
         path:'emp-department',

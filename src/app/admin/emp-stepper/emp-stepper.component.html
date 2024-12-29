@@ -1,5 +1,7 @@
+<div>
+    <button routerLink="view-emp-list" type="button" class="btn btn-primary">Viem Emp List</button>
+</div>
 <div class="employee_form_section mt-2">
-
     <mat-stepper [linear]="isLinear" #stepper>
         <mat-step [stepControl]="firstFormGroup">
             <form [formGroup]="firstFormGroup" class="form-Custom-Css">
@@ -111,3 +113,4 @@
 
     </mat-stepper>
 </div>
+<router-outlet/>

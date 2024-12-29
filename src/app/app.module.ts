@@ -8,7 +8,6 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 import { OnlyNumberDirective } from './directives/only-number.directive';
 import { customInterceptor } from './interceptor/custom.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { EmployeeStepperComponent } from './employee-stepper/employee-stepper.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,7 +20,6 @@ import {MatCardModule} from '@angular/material/card';
     AppComponent,
     PageNotFoundComponent,
     OnlyNumberDirective,
-    EmployeeStepperComponent,
     
   ],
   imports: [
