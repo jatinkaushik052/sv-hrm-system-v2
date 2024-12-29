@@ -12,7 +12,7 @@ export class AdminComponent {
 
   is_Accordion: boolean= false;
   sidebarOpen: boolean= false;
-  menuItemId:string='dashboard'
+  menuItemId:string=''
   
   constructor(private router: Router, private loginStatus: LoginStatusService) { }
 
@@ -27,6 +27,9 @@ export class AdminComponent {
     }
   }
 
+  setActiveMenuItem(menuId: string){
+    this.menuItemId=menuId
+  }
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
   }
@@ -42,7 +45,8 @@ export class AdminComponent {
   }
  
   onAccordion(){
-    this.is_Accordion =!this.is_Accordion;
+    this.is_Accordion =! this.is_Accordion;
+    console.log("click")
   }
   onLogout() {
     localStorage.removeItem('login');

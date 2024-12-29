@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmpdepartmentService } from '../../../services/empdepartment.service';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-view-emp-depart',
@@ -12,30 +12,33 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrl: './view-emp-depart.component.scss'
 })
 export class ViewEmpDepartComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   emp_depart_list: any[] = [];
   isView: boolean = false
   currentIdValue: any = null
   is_delete_pop: boolean = false
-  emp_details: any[] = []
   isLoader: boolean = false;
-  filteredData: any[] = []
+  filteredData: any;
   searchItem: string = '';
   currentPage = 0;
+  displayedColumns: string[] = ['departmentId', 'departmentName', 'departmentLogo', 'action'];
 
+  constructor(private empService: EmpdepartmentService, private router: Router, private http: HttpClient) { }
+  
   ngOnInit(): void {
     this.getAllDepart();
   }
-  constructor(private empService: EmpdepartmentService, private router: Router, private http: HttpClient) { }
-
+  
   handlePageEvent(pageEvent: PageEvent) {
-    this.currentPage=pageEvent.pageIndex;
+    this.currentPage = pageEvent.pageIndex;
     console.log(pageEvent)
   }
   filterData() {
     if (this.searchItem.trim() === '') {
       // when no value enter in searchbox.......
       this.filteredData = this.emp_depart_list;
+      this.filteredData.paginator= this.paginator;
       return
     }
     else {
@@ -45,6 +48,9 @@ export class ViewEmpDepartComponent implements OnInit {
         }
       })
     }
+     // Reset paginator after filtering data
+     this.paginator.pageIndex = 0;  // Reset to first page after filtering
+     this.filteredData.paginator = this.paginator;
   }
 
   getAllDepart() {
@@ -57,6 +63,7 @@ export class ViewEmpDepartComponent implements OnInit {
         this.emp_depart_list.reverse();
         this.emp_depart_list = this.emp_depart_list.slice(0, 50);
         this.filteredData = [...this.emp_depart_list.slice(0, 50)]
+        this.filteredData.paginator = this.paginator;
       },
       error: (err: any) => {
         alert(err.message)

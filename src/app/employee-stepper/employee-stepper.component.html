@@ -1,0 +1,113 @@
+<div class="employee_form_section mt-2">
+
+    <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup" class="form-Custom-Css">
+                <ng-template matStepLabel>Fill out your details</ng-template>
+                <div>
+                    <p class="text-black text-center fs-5 mb-4">Enter Employee Details</p>
+                    <div class="d-flex gap-4 flex-wrap justify-content-between mt-1">
+                        <mat-form-field class="w-25 no-outlineInput">
+                            <mat-label>First Name</mat-label>
+                            <input matInput placeholder="First name" formControlName="firstname" required>
+                        </mat-form-field>
+                        <mat-form-field class="w-25">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput placeholder="Last name" formControlName="lastname" required>
+                        </mat-form-field>
+                        <mat-form-field class="w-25">
+                            <mat-label>Department</mat-label>
+                            <input matInput placeholder="Department" formControlName="department" required>
+                        </mat-form-field>
+                        <mat-form-field class="w-25">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Email" formControlName="email" required>
+                        </mat-form-field>
+                        <mat-form-field class="w-25">
+                            <mat-label>Mobile</mat-label>
+                            <input matInput placeholder="Mobile" formControlName="mobile" required>
+                        </mat-form-field>
+                        <mat-form-field class="w-25">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="Usesname" formControlName="Usesname" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div>
+                    <button mat-button matStepperNext class="btn btn-primary">Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+            <form [formGroup]="secondFormGroup" class="form-Custom-Css">
+                <div class="d-flex flex-wrap gap-1 mt-2 justify-content-between">
+                    <mat-form-field class="w-100">
+                        <mat-label>Street Address</mat-label>
+                        <input matInput formControlName="streetAddress" placeholder="Ex. 1 Main St, New York, NY"
+                            required>
+                    </mat-form-field>
+                    <mat-form-field class="w-25">
+                        <mat-label>Apt Number</mat-label>
+                        <input matInput formControlName="aptNumber" placeholder="Ex. 1 556, 76,098" required>
+                    </mat-form-field>
+                    <mat-form-field class="w-25">
+                        <mat-label>State</mat-label>
+                        <input matInput formControlName="state" placeholder="Ex. UP, HR, MH" required>
+                    </mat-form-field>
+                    <mat-form-field class="w-25">
+                        <mat-label>Zip Code</mat-label>
+                        <input matInput formControlName="zipcode" placeholder="Ex. 1 204300, 232323" required>
+                    </mat-form-field>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
+                    <button mat-button matStepperNext class="btn btn-primary ">Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <div class="form-Custom-Css">
+                <ng-template matStepLabel>Review</ng-template>
+                <div class="review_section">
+                    <mat-card appearance="outlined">
+                        <mat-card-content>First Name: {{ firstFormGroup.get('firstname')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Last Name: {{ firstFormGroup.get('lastname')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Department: {{ firstFormGroup.get('department')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Email: {{ firstFormGroup.get('email')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Mobile: {{ firstFormGroup.get('mobile')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Username: {{ firstFormGroup.get('Usesname')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Street Addres: {{ secondFormGroup.get('streetAddress')?.value
+                            }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>APT Number: {{ secondFormGroup.get('aptNumber')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>State: {{ secondFormGroup.get('state')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Zip Code: {{ secondFormGroup.get('zipcode')?.value }}</mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="d-flex gap-3">
+                    <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
+                    <button mat-button (click)="onSubmit()" class="btn btn-success">Submit</button>
+                    <!-- <button mat-button (click)="stepper.reset()" class="btn btn-success">Submit</button> -->
+                </div>
+            </div>
+        </mat-step>
+
+    </mat-stepper>
+</div>

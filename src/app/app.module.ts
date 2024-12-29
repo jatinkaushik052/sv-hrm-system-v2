@@ -8,18 +8,33 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 import { OnlyNumberDirective } from './directives/only-number.directive';
 import { customInterceptor } from './interceptor/custom.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { EmployeeStepperComponent } from './employee-stepper/employee-stepper.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select'
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     OnlyNumberDirective,
+    EmployeeStepperComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-      
+    MatStepperModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatCardModule
   ],
   providers: [provideHttpClient(withInterceptors([customInterceptor])), provideAnimationsAsync()],
   bootstrap: [AppComponent],

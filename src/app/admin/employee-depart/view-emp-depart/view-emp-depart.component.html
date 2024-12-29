@@ -1,54 +1,74 @@
 <div class="table_section">
   <div class="table_item_search">
-    <input [(ngModel)]="searchItem"
-    (input)="filterData()"
-     type="text" name="" id="" placeholder="Search....">
+    <input [(ngModel)]="searchItem" (input)="filterData()" type="text" name="" id="" placeholder="Search....">
   </div>
   <div *ngIf="isLoader" class="d-flex justify-content-center">
     <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
     </div>
   </div>
-  <table mat-table [dataSource]="filteredData"  class="table">
-   
+  <table class="table ">
     <thead>
       <tr>
-        <th mat-header-cell *matHeaderCellDef scope="col">Department Id</th>
-        <th mat-header-cell *matHeaderCellDef scope="col">Department Name</th>
-        <th mat-header-cell *matHeaderCellDef scope="col">Department Logo</th>
-        <th mat-header-cell *matHeaderCellDef scope="col">Action</th>
+        <th scope="col">Department Id</th>
+        <th scope="col">Department Name</th>
+        <th scope="col">Department Logo</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-        @for (item of filteredData; track $index) {
-            <tr>
-                <td>{{$index+1}}</td>
-                <td>{{item.departmentName}}</td>
-                <td>{{item.departmentLogo}}</td>
-                <td>
-                    <button type="button" (click)="onView(item.departmentId)" class="btn btn-info ">View</button>
-                    <button type="button" (click)="onEdit(item)" class="btn btn-primary ms-2">Edit</button>
-                    <button type="button" (click)="onDelete(item.departmentId)" class="btn btn-danger ms-2">Delete</button>
-                  </td>
-            </tr>
-        }
+      @for (item of filteredData; track $index) {
+      <tr>
+        <td>{{$index+1}}</td>
+        <td>{{item.departmentName}}</td>
+        <td>{{item.departmentLogo}}</td>
+        <td>
+          <button type="button" (click)="onView(item.departmentId)" class="btn btn-info ">View</button>
+          <button type="button" (click)="onEdit(item)" class="btn btn-primary ms-2">Edit</button>
+          <button type="button" (click)="onDelete(item.departmentId)" class="btn btn-danger ms-2">Delete</button>
+        </td>
+      </tr>
+      }
     </tbody>
   </table>
 
+      <!-- <div class="mat-elevation-z8 mat-custm-table">
+        <table mat-table [dataSource]="filteredData">
+
+          <ng-container matColumnDef="departmentId">
+            <th mat-header-cell *matHeaderCellDef>S No</th>
+            <td mat-cell *matCellDef="let element"> {{element.departmentId}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="departmentName">
+            <th mat-header-cell *matHeaderCellDef> Department Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.departmentName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="departmentLogo">
+            <th mat-header-cell *matHeaderCellDef> Department Logo</th>
+            <td mat-cell *matCellDef="let element"> {{element.departmentLogo}} </td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-raised-button color="primary" >View</button>
+              <button mat-raised-button color="info" class="text-warning">Edit</button>
+              <button mat-raised-button color="warn" class="text-danger">Delete</button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div> -->
 </div>
-
-<mat-paginator 
-[length]="filteredData.length"
-[pageSize]="7"
-[showFirstLastButtons]="true"
-[pageSizeOptions]="[5,10,15]"
-[pageIndex]="currentPage"
-(page)="handlePageEvent($event)">
-
+<mat-paginator [length]="filteredData?.length"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]"
+               (page)="handlePageEvent($event)">
 </mat-paginator>
 
-
-  <div *ngIf=" isView" class="modal fade show" id="exampleModal" data-bs-backdrop="static" style="display: block;"
+<div *ngIf=" isView" class="modal fade show" id="exampleModal" data-bs-backdrop="static" style="display: block;"
   data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -60,9 +80,9 @@
       <div class="modal-body text-black">
 
         <form action="" class="row gy-4" *ngIf="currentIdValue">
-            <div class="col-6 d-flex flex-column">
-                <label for="">Department Id :</label>{{currentIdValue.departmentId}}
-              </div>
+          <div class="col-6 d-flex flex-column">
+            <label for="">Department Id :</label>{{currentIdValue.departmentId}}
+          </div>
           <div class="col-6 d-flex flex-column">
             <label for="">Department Name :</label>{{currentIdValue.departmentName}}
           </div>
@@ -93,10 +113,10 @@
         You want to Delete.
       </div>
       <div class="modal-footer">
-        <button (click)="close_modal()" routerLink="/admin/emp-department/view-emp-depart" type="button" class="btn btn-success"
-          data-bs-dismiss="modal">No</button>
-        <button routerLink="/admin/emp-department/view-emp-depart" type="button" class="btn btn-danger" data-bs-dismiss="modal"
-          (click)="deleteData()">Yes</button>
+        <button (click)="close_modal()" routerLink="/admin/emp-department/view-emp-depart" type="button"
+          class="btn btn-success" data-bs-dismiss="modal">No</button>
+        <button routerLink="/admin/emp-department/view-emp-depart" type="button" class="btn btn-danger"
+          data-bs-dismiss="modal" (click)="deleteData()">Yes</button>
       </div>
     </div>
   </div>

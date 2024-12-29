@@ -120,18 +120,25 @@ body {
 
         nav {
             .menuIcon {
-                cursor: pointer;
+                img{
+                    cursor: pointer !important;
+                }
             }
 
             // .navserach{
-            //     height: 60px;
+            //     background-color: white;
             // }
             .navserach select{
                 border: none;
                 border-top-left-radius: 8px;
                 color: white;
                 cursor: pointer;
+                background-color: #2980b9;
                 border-bottom-left-radius: 8px;
+                option{
+                    background-color: white;
+                    color: black;
+                }
             }
             .navserach input {
                 height: 40px !important;

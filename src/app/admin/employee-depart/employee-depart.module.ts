@@ -9,6 +9,10 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     MatPaginatorModule,
     MatTableModule,
+    MatCardModule,
+    MatButtonModule,
+    MatDividerModule
     // BrowserAnimationsModule
   ]
 })

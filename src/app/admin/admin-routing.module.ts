@@ -5,6 +5,7 @@ import { AdminComponent } from './admin.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { LeaveManagementComponent } from './leave-management/leave-management.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { EmployeeStepperComponent } from '../employee-stepper/employee-stepper.component';
 
 const routes: Routes = [
   {
@@ -23,8 +24,8 @@ const routes: Routes = [
         component: LeaveManagementComponent
       },
       {
-        path:'project',
-        component: ProjectsComponent
+        path:'empStepper',
+        component: EmployeeStepperComponent
       },
       {
         path:'emp-department',

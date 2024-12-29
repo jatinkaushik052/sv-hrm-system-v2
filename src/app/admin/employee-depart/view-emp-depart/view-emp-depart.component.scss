@@ -4,8 +4,13 @@
 
   .table_item_search {
     position: absolute;
-    top: 184px;
+    top: 124px;
     right: 29px;
+    input{
+      border: none;
+      padding: 5px;
+      border-radius: 4px;
+    }
   }
 }
   @media (min-width: 360px) and (max-width: 992px) {
@@ -72,3 +77,8 @@
   border: 1px solid #888;
   width: 100%;
 }
+
+
+  .mat-mdc-raised-button{
+    margin: 5px;
+  }
