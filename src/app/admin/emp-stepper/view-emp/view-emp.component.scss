@@ -1,0 +1,29 @@
+.viem_emp_section{
+    width: 100%;
+    overflow-x: auto;
+    
+    table {
+        width: 100%;
+        display: block;
+      }
+      th,
+      td {
+        white-space: nowrap;
+      }
+}
+.viem_emp_section::-webkit-scrollbar {
+    height: 6px;
+}
+
+.viem_emp_section::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.viem_emp_section::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 10px;
+}
+
+.viem_emp_section::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}

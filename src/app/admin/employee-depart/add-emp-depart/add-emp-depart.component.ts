@@ -65,6 +65,7 @@ export class AddEmpDepartComponent implements OnInit {
       departmentName: this.department_form.value.departmentName,
       departmentLogo: this.department_form.value.departmentLogo
     };
+    
     this.empService.addEmpDepartment(payload).subscribe({
       next: (res: any) => {
         alert('Added successfully');

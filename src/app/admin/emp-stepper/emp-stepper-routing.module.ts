@@ -8,9 +8,14 @@ const routes: Routes = [{
   component: EmpStepperComponent
 },
 {
+  path:'admin/empStepper/:id',
+  component: EmpStepperComponent
+},
+{
   path:'view-emp-list',
   component: ViewEmpComponent
-}];
+}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

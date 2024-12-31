@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <button routerLink="view-emp-list" type="button" class="btn btn-primary">Viem Emp List</button>
 </div>
 <div class="employee_form_section mt-2">
@@ -36,7 +36,8 @@
                     </div>
                 </div>
                 <div>
-                    <button mat-button matStepperNext class="btn btn-primary">Next</button>
+                    <button *ngIf="currentId === 0" mat-button matStepperNext class="btn btn-primary">Next</button>
+                    <button *ngIf="currentId !== 0"  mat-button matStepperNext class="btn btn-warning" >Update Next</button>
                 </div>
             </form>
         </mat-step>
@@ -105,12 +106,170 @@
                 </div>
                 <div class="d-flex gap-3">
                     <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
-                    <button mat-button (click)="onSubmit()" class="btn btn-success">Submit</button>
-                    <!-- <button mat-button (click)="stepper.reset()" class="btn btn-success">Submit</button> -->
+                    <button *ngIf="currentId ===0" mat-button (click)="onSubmit()" class="btn btn-success">Submit</button>
+                    <button *ngIf="currentId !==0 " mat-button (click)="onUpdate()" class="btn btn-warning">Update Data</button>
+
+                    //<button mat-button (click)="stepper.reset()" class="btn btn-success">Submit</button>
                 </div>
             </div>
         </mat-step>
 
     </mat-stepper>
 </div>
-<router-outlet/>
+<router-outlet /> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+    <button routerLink="view-emp-list" type="button" class="btn btn-primary">View Emp List</button>
+</div>
+
+<div class="employee_form_section mt-2">
+    <mat-stepper [linear]="isLinear" #stepper>
+        
+        <!-- Section 1: Employee Details -->
+        <mat-step [stepControl]="userDetails.get('section1')!">
+            <form [formGroup]="userDetails" class="form-Custom-Css">
+                <ng-template matStepLabel>Fill out your details</ng-template>
+                <div>
+                    <p class="text-black text-center fs-5 mb-4">Enter Employee Details</p>
+                    <div formGroupName="section1" class="d-flex gap-4 flex-wrap justify-content-between mt-1">
+                        <!-- First Name -->
+                        <mat-form-field class="w-25 no-outlineInput">
+                            <mat-label>First Name</mat-label>
+                            <input matInput placeholder="First name" formControlName="firstname" required>
+                        </mat-form-field>
+                        
+                        <!-- Last Name -->
+                        <mat-form-field class="w-25">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput placeholder="Last name" formControlName="lastname" required>
+                        </mat-form-field>
+                        
+                        <!-- Department -->
+                        <mat-form-field class="w-25">
+                            <mat-label>Department</mat-label>
+                            <input matInput placeholder="Department" formControlName="department" required>
+                        </mat-form-field>
+                        
+                        <!-- Email -->
+                        <mat-form-field class="w-25">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Email" formControlName="email" required>
+                        </mat-form-field>
+                        
+                        <!-- Mobile -->
+                        <mat-form-field class="w-25">
+                            <mat-label>Mobile</mat-label>
+                            <input matInput placeholder="Mobile" formControlName="mobile" required>
+                        </mat-form-field>
+                        
+                        <!-- Username -->
+                        <mat-form-field class="w-25">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="Username" formControlName="username" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div>
+                    <button mat-button matStepperNext class="btn btn-primary">Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <!-- Section 2: Address Details -->
+        <mat-step [stepControl]="userDetails.get('section2')!" label="Fill out your address">
+            <form [formGroup]="userDetails" class="form-Custom-Css">
+                <div formGroupName="section2" class="d-flex flex-wrap gap-1 mt-2 justify-content-between">
+                    <!-- Street Address -->
+                    <mat-form-field class="w-100">
+                        <mat-label>Street Address</mat-label>
+                        <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="streetAddress" required>
+                    </mat-form-field>
+
+                    <!-- Apartment Number -->
+                    <mat-form-field class="w-25">
+                        <mat-label>Apt Number</mat-label>
+                        <input matInput placeholder="Ex. 1 556, 76,098" formControlName="aptNumber" required>
+                    </mat-form-field>
+
+                    <!-- State -->
+                    <mat-form-field class="w-25">
+                        <mat-label>State</mat-label>
+                        <input matInput placeholder="Ex. UP, HR, MH" formControlName="state" required>
+                    </mat-form-field>
+
+                    <!-- Zip Code -->
+                    <mat-form-field class="w-25">
+                        <mat-label>Zip Code</mat-label>
+                        <input matInput placeholder="Ex. 1 204300, 232323" formControlName="zipcode" required>
+                    </mat-form-field>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
+                    <button mat-button matStepperNext class="btn btn-primary">Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <!-- Section 3: Review & Submit -->
+        <mat-step>
+            <div class="form-Custom-Css">
+                <ng-template matStepLabel>Review</ng-template>
+                <div class="review_section">
+                    <!-- Review: Section 1 - Employee Details -->
+                    <mat-card appearance="outlined">
+                        <mat-card-content>First Name: {{ userDetails.get('section1')?.get('firstname')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Last Name: {{ userDetails.get('section1')?.get('lastname')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Department: {{ userDetails.get('section1')?.get('department')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Email: {{ userDetails.get('section1')?.get('email')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Mobile: {{ userDetails.get('section1')?.get('mobile')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Username: {{ userDetails.get('section1')?.get('username')?.value }}</mat-card-content>
+                    </mat-card>
+
+                    <!-- Review: Section 2 - Address Details -->
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Street Address: {{ userDetails.get('section2')?.get('streetAddress')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>APT Number: {{ userDetails.get('section2')?.get('aptNumber')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>State: {{ userDetails.get('section2')?.get('state')?.value }}</mat-card-content>
+                    </mat-card>
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Zip Code: {{ userDetails.get('section2')?.get('zipcode')?.value }}</mat-card-content>
+                    </mat-card>
+                </div>
+
+                <div class="d-flex gap-3">
+                    <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
+                    <button *ngIf="currentId === 0"  mat-button (click)="onSubmit()" class="btn btn-success">Submit</button>
+                    <button *ngIf="currentId !== 0"   mat-button (click)="onUpdate()" class="btn btn-warning">Update Data</button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-stepper>
+</div>
+<router-outlet />
